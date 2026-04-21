@@ -4,333 +4,491 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dámaso Sánchez Díaz — Data Analyst</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230d0f0e'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia%2Cserif' font-size='22' font-weight='500' fill='%233ecf8e'%3EDSD%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230b0f1a'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia%2Cserif' font-size='20' font-weight='600' fill='%2300d4ff'%3EDSD%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=JetBrains+Mono:wght@300;400;500;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0d0f0e;
-    --surface: #1a1f1b;
-    --surface2: #212720;
-    --surface3: #272e28;
-    --accent: #3ecf8e;
-    --accent2: #2ab073;
-    --accent-dim: rgba(62,207,142,0.10);
-    --text: #eaece8;
-    --text2: #8fa08f;
-    --text3: #596059;
-    --border: rgba(62,207,142,0.18);
-    --border2: rgba(255,255,255,0.07);
-    --serif: 'Cormorant Garamond', Georgia, serif;
-    --serif2: 'Libre Baskerville', Georgia, serif;
-    --sans: 'Jost', sans-serif;
-    --mono: 'DM Mono', monospace;
-  }
+:root {
+  --bg:       #0b0f1a;
+  --bg2:      #0e1420;
+  --bg3:      #131929;
+  --surface:  #111827;
+  --surface2: #16202e;
+  --surface3: #1c2a3a;
+  --accent:   #00d4ff;
+  --accent2:  #0099cc;
+  --accent3:  #00ff9d;
+  --accent-dim: rgba(0,212,255,0.08);
+  --accent-dim2: rgba(0,212,255,0.04);
+  --gold:     #f0c060;
+  --text:     #e8edf5;
+  --text2:    #7a92b0;
+  --text3:    #3d5470;
+  --border:   rgba(0,212,255,0.12);
+  --border2:  rgba(255,255,255,0.05);
+  --border3:  rgba(0,212,255,0.25);
+  --serif:    'Cormorant Garamond', Georgia, serif;
+  --sans:     'Syne', sans-serif;
+  --mono:     'JetBrains Mono', monospace;
+  --glow:     0 0 20px rgba(0,212,255,0.15);
+  --glow2:    0 0 40px rgba(0,212,255,0.08);
+}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-weight: 400;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
 
-  body::after {
-    content: '';
-    position: fixed; inset: 0;
-    background-image:
-      linear-gradient(rgba(62,207,142,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(62,207,142,0.025) 1px, transparent 1px);
-    background-size: 64px 64px;
-    pointer-events: none;
-    z-index: 0;
-  }
+/* DOT MATRIX BACKGROUND */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: radial-gradient(circle, rgba(0,212,255,0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.1rem 3rem;
-    background: rgba(13,15,14,0.9);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border2);
-  }
+/* SUBTLE SCANLINE */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
 
-  .nav-logo {
-    display: flex; align-items: center; justify-content: center;
-    width: 38px; height: 38px;
-    border-radius: 8px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    text-decoration: none; flex-shrink: 0;
-  }
+main { position: relative; z-index: 1; }
+section { padding: 5.5rem 3rem; max-width: 1100px; margin: 0 auto; }
 
-  .nav-links {
-    display: flex; gap: 2rem; align-items: center; list-style: none;
-  }
-  .nav-links a {
-    font-family: var(--sans); font-size: 13px; font-weight: 400;
-    color: var(--text2); text-decoration: none;
-    letter-spacing: 0.06em; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 3rem;
+  background: rgba(11,15,26,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
 
-  .lang-toggle {
-    display: flex; border: 1px solid var(--border);
-    border-radius: 6px; overflow: hidden; margin-left: 1.5rem;
-  }
-  .lang-btn {
-    background: transparent; border: none; padding: 5px 13px;
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.07em; color: var(--text3);
-    cursor: pointer; transition: all 0.2s;
-  }
-  .lang-btn.active { background: var(--accent); color: #0d0f0e; font-weight: 500; }
-  .lang-btn:hover:not(.active) { color: var(--accent); }
+.nav-logo {
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 7px;
+  background: var(--surface2); border: 1px solid var(--border3);
+  text-decoration: none; flex-shrink: 0;
+  box-shadow: var(--glow);
+}
 
-  main { position: relative; z-index: 1; }
-  section { padding: 5.5rem 3rem; max-width: 1080px; margin: 0 auto; }
+.nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+.nav-links a {
+  font-family: var(--mono); font-size: 11px; font-weight: 400;
+  color: var(--text2); text-decoration: none;
+  letter-spacing: 0.08em; transition: color 0.2s;
+  text-transform: lowercase;
+}
+.nav-links a:hover { color: var(--accent); }
 
-  #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    text-align: center;
-    padding-top: 8rem;
-    max-width: 1080px; margin: 0 auto;
-  }
+.lang-toggle {
+  display: flex; border: 1px solid var(--border3);
+  border-radius: 5px; overflow: hidden; margin-left: 1.5rem;
+}
+.lang-btn {
+  background: transparent; border: none; padding: 4px 11px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+  color: var(--text3); cursor: pointer; transition: all 0.2s;
+}
+.lang-btn.active { background: var(--accent); color: var(--bg); font-weight: 600; }
+.lang-btn:hover:not(.active) { color: var(--accent); }
 
-  .hero-label {
-    font-family: var(--sans); font-size: 12px; font-weight: 400;
-    color: var(--text2); letter-spacing: 0.09em; margin-bottom: 1.75rem;
-  }
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center; padding-top: 8rem;
+  max-width: 1100px; margin: 0 auto;
+}
 
-  h1 {
-    font-family: var(--serif);
-    font-size: clamp(3.8rem, 8vw, 7rem);
-    line-height: 1.0; letter-spacing: 0.02em;
-    font-weight: 500; color: var(--text);
-  }
-  h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+.hero-terminal-tag {
+  font-family: var(--mono); font-size: 11px; font-weight: 400;
+  color: var(--accent3); letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.5rem;
+  justify-content: center;
+}
+.hero-terminal-tag::before { content: '>_'; color: var(--accent); margin-right: 4px; }
 
-  .hero-location {
-    font-family: var(--mono); font-size: 11px; color: var(--text3);
-    letter-spacing: 0.14em; margin-top: 1rem; text-transform: uppercase;
-  }
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(4rem, 8.5vw, 7.5rem);
+  line-height: 0.95; letter-spacing: 0.01em;
+  font-weight: 600; color: var(--text);
+}
+h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
 
-  .hero-subtitle {
-    font-family: var(--serif2);
-    font-size: clamp(0.88rem, 1.6vw, 1.02rem);
-    color: var(--text2); font-weight: 400; font-style: italic;
-    max-width: 620px; margin: 1.75rem auto 2.5rem; line-height: 1.9;
-  }
+.hero-location {
+  font-family: var(--mono); font-size: 10px; color: var(--text3);
+  letter-spacing: 0.18em; margin-top: 1.25rem; text-transform: uppercase;
+}
 
-  .hero-cta {
-    display: flex; gap: 1rem; flex-wrap: wrap;
-    align-items: center; justify-content: center;
-  }
+.hero-subtitle {
+  font-family: var(--mono); font-size: 13px; font-weight: 300;
+  color: var(--text2); max-width: 580px;
+  margin: 2rem auto 2.75rem; line-height: 1.85;
+  letter-spacing: 0.02em;
+}
 
-  .btn {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.7rem 1.75rem; border-radius: 6px;
-    font-family: var(--sans); font-size: 13px; font-weight: 500;
-    text-decoration: none; transition: all 0.22s;
-    letter-spacing: 0.06em; cursor: pointer; border: none;
-  }
-  .btn-primary { background: var(--accent); color: #0d0f0e; }
-  .btn-primary:hover { background: #55d99e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(62,207,142,0.22); }
-  .btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border2); }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
+.hero-cta {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  align-items: center; justify-content: center;
+}
 
-  .hero-stats {
-    display: flex; gap: 3.5rem;
-    margin-top: 4rem; padding-top: 3rem;
-    border-top: 1px solid var(--border2);
-    justify-content: center;
-  }
-  .stat-item { display: flex; flex-direction: column; gap: 0.3rem; align-items: center; text-align: center; }
-  .stat-num { font-family: var(--serif); font-size: 2.4rem; color: var(--accent); line-height: 1; }
-  .stat-label { font-family: var(--mono); font-size: 11px; color: var(--text3); letter-spacing: 0.07em; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.65rem 1.6rem; border-radius: 5px;
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  text-decoration: none; transition: all 0.22s;
+  letter-spacing: 0.08em; cursor: pointer; border: none;
+  text-transform: lowercase;
+}
+.btn-primary { background: var(--accent); color: var(--bg); }
+.btn-primary:hover { background: #1adeff; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,212,255,0.3); }
+.btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); box-shadow: var(--glow); }
 
-  .section-header { text-align: center; margin-bottom: 3.5rem; }
-  h2 {
-    font-family: var(--serif);
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-    color: var(--text); letter-spacing: 0.01em;
-    font-weight: 500; line-height: 1.1;
-  }
-  .section-divider { width: 40px; height: 1px; background: var(--accent); margin: 1rem auto 0; opacity: 0.5; }
+.hero-stats {
+  display: flex; gap: 0;
+  margin-top: 4rem; padding-top: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden;
+  background: var(--surface);
+}
+.stat-item {
+  display: flex; flex-direction: column;
+  gap: 0.3rem; align-items: center; text-align: center;
+  padding: 1.5rem 2.5rem;
+  border-right: 1px solid var(--border);
+  flex: 1;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--serif); font-size: 2.6rem;
+  color: var(--accent); line-height: 1; font-weight: 500;
+}
+.stat-label {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase;
+}
 
-  #about { border-top: 1px solid var(--border2); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: start; }
-  .about-text p {
-    font-family: var(--serif2); color: var(--text2);
-    font-size: 15px; line-height: 1.9;
-  }
+/* ── SECTION HEADERS ── */
+.section-header { margin-bottom: 3.5rem; }
+.section-header-inner {
+  display: flex; align-items: center; gap: 1rem;
+}
+.section-num {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--accent); letter-spacing: 0.1em; opacity: 0.6;
+}
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--text); letter-spacing: 0.01em;
+  font-weight: 500; line-height: 1.1;
+}
+.section-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--border3), transparent);
+}
 
-  .skills-label { font-family: var(--mono); font-size: 10px; color: var(--text3); letter-spacing: 0.12em; margin-bottom: 1rem; text-transform: uppercase; }
-  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-  .skill-item {
-    background: var(--surface); border: 1px solid var(--border2);
-    border-radius: 8px; padding: 0.9rem 0.75rem; text-align: center;
-    transition: border-color 0.2s, background 0.2s, transform 0.2s; cursor: default;
-  }
-  .skill-item:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
-  .skill-name { font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 4px; }
-  .skill-desc { font-family: var(--sans); font-size: 11px; color: var(--text3); line-height: 1.4; }
+/* ── ABOUT ── */
+#about { border-top: 1px solid var(--border2); }
 
-  .languages-box {
-    margin-top: 1rem; background: var(--surface);
-    border: 1px solid var(--border2); border-radius: 8px;
-    padding: 1rem 1.25rem; transition: border-color 0.2s;
-  }
-  .languages-box:hover { border-color: var(--border); }
-  .lang-row { display: flex; gap: 1.25rem; align-items: center; }
-  .lang-entry { font-family: var(--sans); font-size: 13px; color: var(--text); }
-  .lang-sep { width: 1px; height: 20px; background: var(--border2); }
+.about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: start; }
 
-  #experience { border-top: 1px solid var(--border2); }
-  .timeline { display: flex; flex-direction: column; }
-  .timeline-item {
-    display: grid; grid-template-columns: 160px 1fr;
-    gap: 2.5rem; padding: 2.25rem 0;
-    border-bottom: 1px solid var(--border2);
-  }
-  .timeline-item:last-child { border-bottom: none; }
-  .timeline-date { font-family: var(--mono); font-size: 11px; color: var(--text3); line-height: 1.5; padding-top: 3px; letter-spacing: 0.04em; }
-  .timeline-content h3 { font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
-  .timeline-company { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.05em; margin-bottom: 0.875rem; }
-  .timeline-bullets { list-style: none; }
-  .timeline-bullets li {
-    font-family: var(--serif2); font-size: 13.5px; color: var(--text2);
-    padding: 3px 0; padding-left: 1rem; position: relative; line-height: 1.65;
-  }
-  .timeline-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--accent); }
+.about-text p {
+  font-family: var(--mono); font-size: 13px; font-weight: 300;
+  color: var(--text2); line-height: 1.9; letter-spacing: 0.02em;
+}
+.about-text p + p { margin-top: 1.25rem; }
+.about-text strong { color: var(--accent); font-weight: 500; }
 
-  #projects { border-top: 1px solid var(--border2); }
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.25rem; }
-  .project-card {
-    background: var(--surface); border: 1px solid var(--border2);
-    border-radius: 12px; padding: 1.75rem; transition: all 0.25s;
-    position: relative; overflow: hidden; text-decoration: none;
-    display: block; color: inherit;
-  }
-  .project-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .project-card:hover { border-color: var(--border); transform: translateY(-3px); }
-  .project-card:hover::before { opacity: 1; }
-  .project-card.coming-soon { opacity: 0.5; pointer-events: none; }
-  .project-card.coming-soon::after {
-    content: attr(data-label); position: absolute; top: 1rem; right: 1rem;
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
-    color: var(--text3); background: var(--surface2);
-    padding: 3px 8px; border-radius: 4px; border: 1px solid var(--border2);
-  }
-  .project-icon { width: 40px; height: 40px; background: var(--accent-dim); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 1.25rem; }
-  .project-title { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 0.5rem; line-height: 1.35; }
-  .project-desc { font-family: var(--serif2); font-size: 12.5px; color: var(--text2); line-height: 1.65; margin-bottom: 1.25rem; }
-  .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; }
-  .projects-note { margin-top: 1.75rem; font-family: var(--mono); font-size: 12px; color: var(--text3); letter-spacing: 0.04em; }
+/* COMPETENCY MATRIX */
+.matrix-label {
+  font-family: var(--mono); font-size: 10px; color: var(--text3);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.25rem;
+}
+.matrix-group { margin-bottom: 1.25rem; }
+.matrix-group-name {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--accent); letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 0.6rem;
+  opacity: 0.7;
+}
+.matrix-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.matrix-tool {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--text2); background: var(--surface2);
+  border: 1px solid var(--border2); border-radius: 4px;
+  padding: 4px 10px; letter-spacing: 0.04em;
+  transition: all 0.2s; cursor: default;
+}
+.matrix-tool:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); transform: translateY(-1px); }
+.matrix-tool.primary { border-color: rgba(0,212,255,0.2); color: var(--text); }
 
-  #education { border-top: 1px solid var(--border2); }
-  .education-grid { display: flex; flex-direction: column; gap: 1rem; }
-  .edu-card {
-    background: var(--surface); border: 1px solid var(--border2);
-    border-radius: 10px; padding: 1.5rem 1.75rem;
-    display: flex; justify-content: space-between; align-items: start; gap: 2rem;
-    transition: border-color 0.2s;
-  }
-  .edu-card:hover { border-color: var(--border); }
-  .edu-degree { font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
-  .edu-school { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.05em; }
-  .edu-detail { font-family: var(--serif2); font-size: 12px; font-style: italic; color: var(--text3); margin-top: 6px; }
-  .edu-period { font-family: var(--mono); font-size: 11px; color: var(--text3); white-space: nowrap; flex-shrink: 0; letter-spacing: 0.04em; }
+.lang-chips { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+.lang-chip {
+  font-family: var(--mono); font-size: 11px;
+  padding: 5px 12px; border-radius: 4px;
+  border: 1px solid var(--border2);
+  background: var(--surface2); color: var(--text2);
+  letter-spacing: 0.04em;
+}
+.lang-chip .chip-level { color: var(--accent); margin-left: 6px; }
 
-  #contact { border-top: 1px solid var(--border2); }
-  .contact-inner {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 16px; padding: 3rem; text-align: center; position: relative; overflow: hidden;
-  }
-  .contact-inner::before {
-    content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
-    width: 400px; height: 220px;
-    background: radial-gradient(ellipse, rgba(62,207,142,0.07), transparent 70%);
-    pointer-events: none;
-  }
-  .contact-eyebrow { font-family: var(--mono); font-size: 10px; color: var(--text3); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  .contact-links-grid { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.875rem; align-items: center; }
-  .contact-row {
-    display: flex; align-items: center; gap: 1.25rem;
-    background: var(--surface2); border: 1px solid var(--border2);
-    border-radius: 10px; padding: 1rem 1.75rem;
-    text-decoration: none; transition: all 0.22s;
-    width: 100%; max-width: 440px;
-  }
-  .contact-row:hover { border-color: var(--accent); transform: translateY(-2px); background: var(--accent-dim); }
-  .contact-row-label { font-family: var(--mono); font-size: 10px; color: var(--text3); letter-spacing: 0.1em; min-width: 68px; text-transform: uppercase; }
-  .contact-row-value { font-family: var(--sans); font-size: 13.5px; color: var(--accent); }
-  .contact-row-value.plain { color: var(--text); }
+/* ── EXPERIENCE ── */
+#experience { border-top: 1px solid var(--border2); }
 
-  footer {
-    position: relative; z-index: 1; text-align: center;
-    padding: 2rem 3rem; border-top: 1px solid var(--border2);
-    font-family: var(--mono); font-size: 11px; color: var(--text3); letter-spacing: 0.05em;
-  }
+.timeline { display: flex; flex-direction: column; }
+.timeline-item {
+  display: grid; grid-template-columns: 148px 1fr;
+  gap: 2.5rem; padding: 2rem 0;
+  border-bottom: 1px solid var(--border2); position: relative;
+}
+.timeline-item:last-child { border-bottom: none; }
+.timeline-item::before {
+  content: '';
+  position: absolute; left: 148px; top: 0; bottom: 0;
+  width: 1px; background: var(--border2);
+  transform: translateX(-1.25rem);
+}
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .fade-up { animation: fadeUp 0.7s ease forwards; opacity: 0; }
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.22s; }
-  .delay-3 { animation-delay: 0.35s; }
-  .delay-4 { animation-delay: 0.48s; }
-  .delay-5 { animation-delay: 0.62s; }
+.timeline-date {
+  font-family: var(--mono); font-size: 10px; color: var(--text3);
+  line-height: 1.6; padding-top: 2px; letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.timeline-content h3 {
+  font-family: var(--sans); font-size: 14px; font-weight: 600;
+  color: var(--text); margin-bottom: 2px; letter-spacing: 0.02em;
+}
+.timeline-company {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--accent); letter-spacing: 0.08em;
+  margin-bottom: 0.875rem; text-transform: uppercase; opacity: 0.8;
+}
+.timeline-bullets { list-style: none; }
+.timeline-bullets li {
+  font-family: var(--mono); font-size: 12px; font-weight: 300;
+  color: var(--text2); padding: 3px 0; padding-left: 1.1rem;
+  position: relative; line-height: 1.65; letter-spacing: 0.02em;
+}
+.timeline-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--accent); opacity: 0.5; }
 
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    section { padding: 4rem 1.5rem; }
-    #hero { padding: 7rem 1.5rem 3rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .timeline-item { grid-template-columns: 1fr; gap: 0.4rem; }
-    .hero-stats { gap: 2rem; flex-wrap: wrap; }
-    .contact-inner { padding: 2rem 1.25rem; }
-  }
+/* ── PROJECTS BENTO ── */
+#projects { border-top: 1px solid var(--border2); }
 
-  [data-lang] { display: none; }
-  body.lang-es [data-lang="es"] { display: revert; }
-  body.lang-en [data-lang="en"] { display: revert; }
-  span[data-lang], a[data-lang], li[data-lang] { display: none; }
-  body.lang-es span[data-lang="es"], body.lang-es a[data-lang="es"], body.lang-es li[data-lang="es"] { display: revert; }
-  body.lang-en span[data-lang="en"], body.lang-en a[data-lang="en"], body.lang-en li[data-lang="en"] { display: revert; }
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+
+.bento-card {
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: 10px; padding: 1.75rem;
+  transition: all 0.25s; position: relative; overflow: hidden;
+  text-decoration: none; color: inherit; display: flex;
+  flex-direction: column; gap: 1rem;
+}
+.bento-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.bento-card:hover { border-color: var(--border3); transform: translateY(-2px); box-shadow: var(--glow2); }
+.bento-card:hover::after { opacity: 1; }
+
+/* Featured card spans full width */
+.bento-card.featured {
+  grid-column: 1 / -1;
+  flex-direction: row; gap: 2rem; align-items: flex-start;
+}
+
+.bento-card.coming-soon { opacity: 0.45; pointer-events: none; }
+.bento-card.coming-soon .bento-status { color: var(--text3); }
+
+.bento-status {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--mono); font-size: 10px;
+  color: var(--accent3); letter-spacing: 0.1em; text-transform: uppercase;
+}
+.status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor; flex-shrink: 0;
+}
+.status-dot.pulse { animation: pulse 2s infinite; }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.bento-title {
+  font-family: var(--sans); font-size: 15px; font-weight: 600;
+  color: var(--text); line-height: 1.3; letter-spacing: 0.01em;
+}
+.bento-desc {
+  font-family: var(--mono); font-size: 12px; font-weight: 300;
+  color: var(--text2); line-height: 1.7; letter-spacing: 0.02em;
+  flex: 1;
+}
+.bento-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: auto; }
+.tag {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+  color: var(--accent); background: var(--accent-dim);
+  border: 1px solid var(--border); padding: 3px 8px; border-radius: 3px;
+}
+
+.bento-card.featured .bento-left { flex: 1; display: flex; flex-direction: column; gap: 1rem; }
+.bento-card.featured .bento-right {
+  flex-shrink: 0; width: 200px;
+  background: var(--surface2); border: 1px solid var(--border2);
+  border-radius: 7px; padding: 1.25rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.bento-meta-label { font-family: var(--mono); font-size: 9px; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.25rem; }
+.bento-meta-val { font-family: var(--mono); font-size: 11px; color: var(--text2); }
+
+.projects-note {
+  margin-top: 1.5rem; font-family: var(--mono);
+  font-size: 11px; color: var(--text3); letter-spacing: 0.06em;
+}
+.projects-note::before { content: '// '; color: var(--text3); }
+
+/* ── EDUCATION ── */
+#education { border-top: 1px solid var(--border2); }
+.education-grid { display: flex; flex-direction: column; gap: 0.875rem; }
+.edu-card {
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: 8px; padding: 1.5rem 1.75rem;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 2rem; transition: all 0.2s;
+}
+.edu-card:hover { border-color: var(--border3); box-shadow: var(--glow2); }
+.edu-degree { font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.edu-school { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; }
+.edu-detail { font-family: var(--mono); font-size: 11px; color: var(--text3); margin-top: 7px; letter-spacing: 0.03em; }
+.edu-period { font-family: var(--mono); font-size: 10px; color: var(--text3); white-space: nowrap; flex-shrink: 0; letter-spacing: 0.06em; padding-top: 2px; text-transform: uppercase; }
+
+/* ── CONTACT ── */
+#contact { border-top: 1px solid var(--border2); }
+.contact-inner {
+  background: var(--surface); border: 1px solid var(--border3);
+  border-radius: 12px; padding: 3.5rem;
+  text-align: center; position: relative; overflow: hidden;
+  box-shadow: var(--glow2);
+}
+.contact-inner::before {
+  content: '';
+  position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+  width: 500px; height: 250px;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.06), transparent 70%);
+  pointer-events: none;
+}
+.contact-eyebrow {
+  font-family: var(--mono); font-size: 10px; color: var(--accent);
+  letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1rem;
+  opacity: 0.7;
+}
+.contact-links-grid {
+  margin-top: 2.75rem;
+  display: flex; flex-direction: column; gap: 0.75rem; align-items: center;
+}
+.contact-row {
+  display: flex; align-items: center; gap: 1.5rem;
+  background: var(--surface2); border: 1px solid var(--border2);
+  border-radius: 7px; padding: 0.9rem 1.75rem;
+  text-decoration: none; transition: all 0.22s;
+  width: 100%; max-width: 460px;
+}
+.contact-row:hover { border-color: var(--accent); transform: translateY(-2px); background: var(--accent-dim); box-shadow: var(--glow); }
+.contact-row-label { font-family: var(--mono); font-size: 9px; color: var(--text3); letter-spacing: 0.14em; min-width: 72px; text-transform: uppercase; }
+.contact-row-value { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 0.03em; }
+.contact-row-value.plain { color: var(--text); }
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 1; text-align: center;
+  padding: 1.75rem 3rem; border-top: 1px solid var(--border2);
+  font-family: var(--mono); font-size: 10px;
+  color: var(--text3); letter-spacing: 0.08em;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.75s ease forwards; opacity: 0; }
+.d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.18s; }
+.d3 { animation-delay: 0.30s; } .d4 { animation-delay: 0.44s; }
+.d5 { animation-delay: 0.58s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  section { padding: 4rem 1.5rem; }
+  #hero { padding: 7rem 1.5rem 3rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .timeline-item { grid-template-columns: 1fr; gap: 0.4rem; }
+  .timeline-item::before { display: none; }
+  .hero-stats { flex-direction: column; }
+  .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .bento-grid { grid-template-columns: 1fr; }
+  .bento-card.featured { flex-direction: column; }
+  .bento-card.featured .bento-right { width: 100%; }
+  .contact-inner { padding: 2rem 1.25rem; }
+}
+
+/* ── LANG ── */
+[data-lang] { display: none; }
+body.lang-es [data-lang="es"] { display: revert; }
+body.lang-en [data-lang="en"] { display: revert; }
+span[data-lang], a[data-lang], li[data-lang] { display: none; }
+body.lang-es span[data-lang="es"], body.lang-es a[data-lang="es"], body.lang-es li[data-lang="es"] { display: revert; }
+body.lang-en span[data-lang="en"], body.lang-en a[data-lang="en"], body.lang-en li[data-lang="en"] { display: revert; }
 </style>
 </head>
 <body class="lang-es">
 
+<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo" aria-label="DSD">
-    <svg width="26" height="17" viewBox="0 0 40 18" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="15" font-family="Georgia,serif" font-size="17" font-weight="500" fill="#3ecf8e">DSD</text>
+    <svg width="28" height="17" viewBox="0 0 42 17" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="14" font-family="Georgia,serif" font-size="16" font-weight="600" fill="#00d4ff">DSD</text>
     </svg>
   </a>
   <ul class="nav-links">
-    <li><a href="#about" data-lang="es">Sobre mí</a><a href="#about" data-lang="en">About</a></li>
-    <li><a href="#experience" data-lang="es">Trayectoria</a><a href="#experience" data-lang="en">Experience</a></li>
-    <li><a href="#projects" data-lang="es">Proyectos</a><a href="#projects" data-lang="en">Projects</a></li>
-    <li><a href="#education" data-lang="es">Formación</a><a href="#education" data-lang="en">Education</a></li>
-    <li><a href="#contact" data-lang="es">Contacto</a><a href="#contact" data-lang="en">Contact</a></li>
+    <li><a href="#about" data-lang="es">sobre_mí</a><a href="#about" data-lang="en">about</a></li>
+    <li><a href="#experience" data-lang="es">trayectoria</a><a href="#experience" data-lang="en">experience</a></li>
+    <li><a href="#projects" data-lang="es">proyectos</a><a href="#projects" data-lang="en">projects</a></li>
+    <li><a href="#education" data-lang="es">formación</a><a href="#education" data-lang="en">education</a></li>
+    <li><a href="#contact" data-lang="es">contacto</a><a href="#contact" data-lang="en">contact</a></li>
     <li>
       <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('es')">ES</button>
@@ -340,124 +498,150 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
-  <div class="hero-label fade-up delay-1">
-    <span data-lang="es">Economista (UNT) &nbsp;·&nbsp; Master's Degree Candidate in Management, Analytics &amp; AI (UTDT) &nbsp;·&nbsp; Data Analyst</span>
-    <span data-lang="en">Economist (UNT) &nbsp;·&nbsp; Master's Degree Candidate in Management, Analytics &amp; AI (UTDT) &nbsp;·&nbsp; Data Analyst</span>
+  <div class="hero-terminal-tag fade-up d1">
+    <span data-lang="es">economista · analista cuantitativo · buenos aires</span>
+    <span data-lang="en">economist · quantitative analyst · buenos aires</span>
   </div>
 
-  <h1 class="fade-up delay-2">Dámaso<br><em>Sánchez Díaz</em></h1>
-  <p class="hero-location fade-up delay-2">Buenos Aires, Argentina</p>
+  <h1 class="fade-up d2">Dámaso<br><em>Sánchez Díaz</em></h1>
+  <p class="hero-location fade-up d2">— Buenos Aires, Argentina —</p>
 
-  <p class="hero-subtitle fade-up delay-3" data-lang="es">
-    Soy Licenciado en Economía de la Universidad Nacional de Tucumán, con una rigurosa formación académica. En paralelo, desarrollé un enfoque en análisis cuantitativo y estadística aplicada. Actualmente, soy Candidato al Magíster en Management, Analytics &amp; AI de la Universidad Torcuato Di Tella.
+  <p class="hero-subtitle fade-up d3" data-lang="es">
+    Foco en la intersección entre rigor econométrico<br>y análisis de datos aplicado a negocios.<br>
+    Candidato al MiM+AI · Universidad Torcuato Di Tella.
   </p>
-  <p class="hero-subtitle fade-up delay-3" data-lang="en">
-    I hold an Economics degree from the Universidad Nacional de Tucumán, built on a rigorous academic foundation. Alongside my studies, I developed a focus on quantitative analysis and applied statistics. I am currently a Master's Degree Candidate in Management, Analytics &amp; AI at Universidad Torcuato Di Tella.
+  <p class="hero-subtitle fade-up d3" data-lang="en">
+    Focus on the intersection of econometric rigor<br>and data analysis applied to business.<br>
+    MiM+AI Candidate · Universidad Torcuato Di Tella.
   </p>
 
-  <div class="hero-cta fade-up delay-4">
-    <a href="#projects" class="btn btn-primary" data-lang="es">Ver proyectos</a>
-    <a href="#projects" class="btn btn-primary" data-lang="en">View projects</a>
-    <a href="#contact" class="btn btn-ghost" data-lang="es">Contactarme</a>
-    <a href="#contact" class="btn btn-ghost" data-lang="en">Get in touch</a>
+  <div class="hero-cta fade-up d4">
+    <a href="#projects" class="btn btn-primary" data-lang="es">ver proyectos</a>
+    <a href="#projects" class="btn btn-primary" data-lang="en">view projects</a>
+    <a href="#contact" class="btn btn-ghost" data-lang="es">contactarme</a>
+    <a href="#contact" class="btn btn-ghost" data-lang="en">get in touch</a>
   </div>
 
-  <div class="hero-stats fade-up delay-5">
+  <div class="hero-stats fade-up d5">
     <div class="stat-item">
       <span class="stat-num">9.14</span>
-      <span class="stat-label" data-lang="es">promedio de grado</span>
-      <span class="stat-label" data-lang="en">GPA (out of 10)</span>
+      <span class="stat-label" data-lang="es">promedio · unt</span>
+      <span class="stat-label" data-lang="en">GPA · UNT</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num">5+</span>
-      <span class="stat-label" data-lang="es">años exp. académica</span>
-      <span class="stat-label" data-lang="en">years academic exp.</span>
+      <span class="stat-num">3°</span>
+      <span class="stat-label" data-lang="es">entre 479 estudiantes</span>
+      <span class="stat-label" data-lang="en">out of 479 students</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num" style="font-family:var(--serif);font-size:1.2rem;line-height:1.3;color:var(--accent);">Master in Management,<br>Analytics &amp; AI</span>
-      <span class="stat-label" style="margin-top:5px;">Universidad Torcuato Di Tella</span>
+      <span class="stat-num" style="font-size:1.1rem;line-height:1.4;color:var(--accent);">MiM + AI<br><span style="font-size:0.85rem;color:var(--text2);font-family:var(--mono);font-weight:300;">UTDT · 2026</span></span>
+      <span class="stat-label" data-lang="es">maestría en curso</span>
+      <span class="stat-label" data-lang="en">master's in progress</span>
     </div>
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
   <div class="section-header">
-    <h2 data-lang="es">Sobre mí</h2>
-    <h2 data-lang="en">About me</h2>
-    <div class="section-divider"></div>
+    <div class="section-header-inner">
+      <span class="section-num">01</span>
+      <h2 data-lang="es">Sobre mí</h2>
+      <h2 data-lang="en">About me</h2>
+      <div class="section-line"></div>
+    </div>
   </div>
+
   <div class="about-grid">
     <div class="about-text">
-      <p data-lang="es">Soy economista recibido en la Universidad Nacional de Tucumán, y actualmente candidato al Magíster en Management, Analytics &amp; AI de la Universidad Torcuato Di Tella. Mi ventaja diferencial es combinar el rigor analítico de la economía académica con habilidades prácticas en análisis de datos. He construido indicadores económicos con microdatos reales, trabajado en operatoria financiera y conducido investigación aplicada en behavioral economics.</p>
-      <p data-lang="en">I hold an Economics degree from the Universidad Nacional de Tucumán, and I am currently a candidate for the Master's in Management, Analytics &amp; AI at Universidad Torcuato Di Tella. My edge is combining the analytical rigor of academic economics with practical data skills. I have built economic indicators from real microdata, worked in financial operations, and conducted applied research in behavioral economics.</p>
+      <p data-lang="es">
+        Economista recibido en la <strong>Universidad Nacional de Tucumán</strong> (promedio 9.14, 3° entre 479 estudiantes). Actualmente candidato al <strong>Magíster en Management, Analytics &amp; AI</strong> en la Universidad Torcuato Di Tella.
+      </p>
+      <p data-lang="es" style="margin-top:1.25rem;">
+        Mi perfil combina formación econométrica rigurosa con experiencia en construcción de indicadores desde microdatos reales, operatoria financiera e investigación aplicada en behavioral economics. Foco en convertir datos complejos en decisiones accionables.
+      </p>
+      <p data-lang="en">
+        Economics graduate from <strong>Universidad Nacional de Tucumán</strong> (GPA 9.14, ranked 3rd among 479 students). Currently a candidate for the <strong>Master's in Management, Analytics &amp; AI</strong> at Universidad Torcuato Di Tella.
+      </p>
+      <p data-lang="en" style="margin-top:1.25rem;">
+        My profile combines rigorous econometric training with hands-on experience building indicators from real microdata, financial operations, and applied research in behavioral economics. Focus on turning complex data into actionable decisions.
+      </p>
     </div>
+
     <div>
-      <div class="skills-label" data-lang="es">Herramientas</div>
-      <div class="skills-label" data-lang="en">Tools &amp; Skills</div>
-      <div class="skills-grid">
-        <div class="skill-item">
-          <div class="skill-name">Python</div>
-          <div class="skill-desc">Pandas · NumPy · Matplotlib</div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name">SQL</div>
-          <div class="skill-desc" data-lang="es">consultas · agregaciones</div>
-          <div class="skill-desc" data-lang="en">queries · aggregations</div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name">Power BI</div>
-          <div class="skill-desc" data-lang="es">dashboards · visualizaciones</div>
-          <div class="skill-desc" data-lang="en">dashboards · visuals</div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name">R / EViews</div>
-          <div class="skill-desc" data-lang="es">econometría · series de tiempo</div>
-          <div class="skill-desc" data-lang="en">econometrics · time series</div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name">STATA</div>
-          <div class="skill-desc" data-lang="es">análisis estadístico</div>
-          <div class="skill-desc" data-lang="en">statistical analysis</div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-name">LaTeX</div>
-          <div class="skill-desc" data-lang="es">reportes técnicos</div>
-          <div class="skill-desc" data-lang="en">technical reports</div>
+      <div class="matrix-label" data-lang="es">Matriz de competencias</div>
+      <div class="matrix-label" data-lang="en">Competency matrix</div>
+
+      <div class="matrix-group">
+        <div class="matrix-group-name" data-lang="es">Análisis de datos</div>
+        <div class="matrix-group-name" data-lang="en">Data analysis</div>
+        <div class="matrix-tools">
+          <span class="matrix-tool primary">Python</span>
+          <span class="matrix-tool primary">Pandas</span>
+          <span class="matrix-tool primary">NumPy</span>
+          <span class="matrix-tool primary">Matplotlib</span>
+          <span class="matrix-tool">SQL</span>
+          <span class="matrix-tool">Power BI</span>
         </div>
       </div>
-      <div class="languages-box">
-        <div class="skills-label" data-lang="es">Idiomas</div>
-        <div class="skills-label" data-lang="en">Languages</div>
-        <div class="lang-row">
-          <div class="lang-entry" data-lang="es">Español — Nativo</div>
-          <div class="lang-entry" data-lang="en">Spanish — Native</div>
-          <div class="lang-sep"></div>
-          <div class="lang-entry" data-lang="es">Inglés — B1+</div>
-          <div class="lang-entry" data-lang="en">English — B1+</div>
+
+      <div class="matrix-group">
+        <div class="matrix-group-name" data-lang="es">Econometría &amp; modelado</div>
+        <div class="matrix-group-name" data-lang="en">Econometrics &amp; modeling</div>
+        <div class="matrix-tools">
+          <span class="matrix-tool primary">R</span>
+          <span class="matrix-tool primary">EViews</span>
+          <span class="matrix-tool">STATA</span>
+          <span class="matrix-tool">Series de tiempo</span>
         </div>
+      </div>
+
+      <div class="matrix-group">
+        <div class="matrix-group-name" data-lang="es">Reporting técnico</div>
+        <div class="matrix-group-name" data-lang="en">Technical reporting</div>
+        <div class="matrix-tools">
+          <span class="matrix-tool">LaTeX</span>
+          <span class="matrix-tool">DAX</span>
+          <span class="matrix-tool">Excel</span>
+        </div>
+      </div>
+
+      <div class="matrix-label" style="margin-top:1.5rem;" data-lang="es">Idiomas</div>
+      <div class="matrix-label" style="margin-top:1.5rem;" data-lang="en">Languages</div>
+      <div class="lang-chips">
+        <div class="lang-chip" data-lang="es">Español<span class="chip-level">nativo</span></div>
+        <div class="lang-chip" data-lang="en">Spanish<span class="chip-level">native</span></div>
+        <div class="lang-chip" data-lang="es">Inglés<span class="chip-level">B1+</span></div>
+        <div class="lang-chip" data-lang="en">English<span class="chip-level">B1+</span></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-header">
-    <h2 data-lang="es">Trayectoria</h2>
-    <h2 data-lang="en">Experience</h2>
-    <div class="section-divider"></div>
+    <div class="section-header-inner">
+      <span class="section-num">02</span>
+      <h2 data-lang="es">Trayectoria</h2>
+      <h2 data-lang="en">Experience</h2>
+      <div class="section-line"></div>
+    </div>
   </div>
+
   <div class="timeline">
 
     <div class="timeline-item">
-      <div class="timeline-date" data-lang="es">ene 2026 —<br>abr 2026</div>
-      <div class="timeline-date" data-lang="en">Jan 2026 —<br>Apr 2026</div>
+      <div class="timeline-date" data-lang="es">ene 2026<br>abr 2026</div>
+      <div class="timeline-date" data-lang="en">jan 2026<br>apr 2026</div>
       <div class="timeline-content">
         <h3 data-lang="es">Operador y Analista de Operaciones Financieras</h3>
         <h3 data-lang="en">Financial Operations Analyst</h3>
         <div class="timeline-company">Barza Company · Tucumán</div>
         <ul class="timeline-bullets">
-          <li data-lang="es">Conciliación y validación de registros financieros para asegurar la integridad de cartera.</li>
+          <li data-lang="es">Conciliación y validación de registros financieros para asegurar integridad de cartera.</li>
           <li data-lang="en">Reconciliation and validation of financial records to ensure portfolio integrity.</li>
           <li data-lang="es">Trazabilidad de cheques, valores y movimientos internos de fondos.</li>
           <li data-lang="en">Traceability of checks, securities, and internal fund movements.</li>
@@ -468,14 +652,14 @@
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-date" data-lang="es">jul 2025 —<br>ene 2026</div>
-      <div class="timeline-date" data-lang="en">Jul 2025 —<br>Jan 2026</div>
+      <div class="timeline-date" data-lang="es">jul 2025<br>ene 2026</div>
+      <div class="timeline-date" data-lang="en">jul 2025<br>jan 2026</div>
       <div class="timeline-content">
         <h3 data-lang="es">Pasante — Estadística Aplicada y Análisis de Datos</h3>
         <h3 data-lang="en">Intern — Applied Statistics &amp; Data Analysis</h3>
         <div class="timeline-company">Dirección Provincial de Estadística · Tucumán</div>
         <ul class="timeline-bullets">
-          <li data-lang="es">Construcción de indicadores económicos provinciales mediante el procesamiento de microdatos.</li>
+          <li data-lang="es">Construcción de indicadores económicos provinciales mediante procesamiento de microdatos.</li>
           <li data-lang="en">Built provincial economic indicators through microdata processing.</li>
           <li data-lang="es">Desarrollo de reportes estadísticos y análisis de series de tiempo.</li>
           <li data-lang="en">Developed statistical reports and time series analyses.</li>
@@ -484,8 +668,8 @@
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-date" data-lang="es">may 2023 —<br>actualidad</div>
-      <div class="timeline-date" data-lang="en">May 2023 —<br>Present</div>
+      <div class="timeline-date" data-lang="es">may 2023<br>actualidad</div>
+      <div class="timeline-date" data-lang="en">may 2023<br>present</div>
       <div class="timeline-content">
         <h3 data-lang="es">Ayudante Estudiantil — Macroeconomía I</h3>
         <h3 data-lang="en">Teaching Assistant — Macroeconomics I</h3>
@@ -500,15 +684,15 @@
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-date" data-lang="es">nov 2024 —<br>dic 2025</div>
-      <div class="timeline-date" data-lang="en">Nov 2024 —<br>Dec 2025</div>
+      <div class="timeline-date" data-lang="es">nov 2024<br>dic 2025</div>
+      <div class="timeline-date" data-lang="en">nov 2024<br>dec 2025</div>
       <div class="timeline-content">
         <h3 data-lang="es">Becario de Investigación (BEI)</h3>
         <h3 data-lang="en">Research Fellow (BEI)</h3>
         <div class="timeline-company">Secretaría de Ciencia, Arte e Innovación · Tucumán</div>
         <ul class="timeline-bullets">
-          <li data-lang="es">Investigación seleccionada entre 146 proyectos presentados en la provincia. Aprobada con calificación sobresaliente como tesis de grado.</li>
-          <li data-lang="en">Research selected among 146 projects submitted province-wide. Approved with outstanding marks as undergraduate thesis.</li>
+          <li data-lang="es">Investigación seleccionada entre 146 proyectos provinciales. Aprobada con nota sobresaliente como tesis de grado.</li>
+          <li data-lang="en">Research selected among 146 provincial projects. Approved with outstanding marks as undergraduate thesis.</li>
           <li data-lang="es">Análisis del derecho argentino vigente bajo la óptica del Behavioral Economics.</li>
           <li data-lang="en">Analysis of Argentine law through the lens of Behavioral Economics.</li>
         </ul>
@@ -516,8 +700,8 @@
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-date" data-lang="es">jun 2021 —<br>mar 2022</div>
-      <div class="timeline-date" data-lang="en">Jun 2021 —<br>Mar 2022</div>
+      <div class="timeline-date" data-lang="es">jun 2021<br>mar 2022</div>
+      <div class="timeline-date" data-lang="en">jun 2021<br>mar 2022</div>
       <div class="timeline-content">
         <h3 data-lang="es">Asistente Administrativo y Contable</h3>
         <h3 data-lang="en">Administrative &amp; Accounting Assistant</h3>
@@ -525,8 +709,8 @@
         <ul class="timeline-bullets">
           <li data-lang="es">Manejo de paquete Office (Word, PowerPoint, Excel).</li>
           <li data-lang="en">Proficient use of Office suite (Word, PowerPoint, Excel).</li>
-          <li data-lang="es">Categorización y digitalización de flujos documentales para optimizar la trazabilidad de la información contable.</li>
-          <li data-lang="en">Categorization and digitization of document flows to optimize traceability of accounting information.</li>
+          <li data-lang="es">Categorización y digitalización de flujos documentales para optimizar trazabilidad contable.</li>
+          <li data-lang="en">Categorization and digitization of document flows to optimize accounting traceability.</li>
         </ul>
       </div>
     </div>
@@ -534,48 +718,95 @@
   </div>
 </section>
 
+<!-- PROJECTS BENTO -->
 <section id="projects">
   <div class="section-header">
-    <h2 data-lang="es">Proyectos</h2>
-    <h2 data-lang="en">Projects</h2>
-    <div class="section-divider"></div>
-  </div>
-  <div class="projects-grid">
-    <div class="project-card coming-soon" data-label="EN PROCESO">
-      <div class="project-icon">📊</div>
-      <div class="project-title" data-lang="es">Análisis Económico Argentina — EDA con Python</div>
-      <div class="project-title" data-lang="en">Argentina Economic Analysis — EDA with Python</div>
-      <div class="project-desc" data-lang="es">Exploración de indicadores macroeconómicos argentinos (INDEC/BCRA) con Python. Limpieza de datos, visualización de series de tiempo e identificación de patrones estructurales.</div>
-      <div class="project-desc" data-lang="en">Exploration of Argentine macroeconomic indicators (INDEC/BCRA) using Python. Data cleaning, time series visualization, and structural pattern identification.</div>
-      <div class="project-tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">INDEC</span></div>
-    </div>
-    <div class="project-card coming-soon" data-label="PRÓXIMO">
-      <div class="project-icon">📈</div>
-      <div class="project-title" data-lang="es">Dashboard Económico — Power BI</div>
-      <div class="project-title" data-lang="en">Economic Dashboard — Power BI</div>
-      <div class="project-desc" data-lang="es">Dashboard interactivo con indicadores clave de la economía argentina: inflación, empleo y actividad. Diseñado para toma de decisiones.</div>
-      <div class="project-desc" data-lang="en">Interactive dashboard with key Argentine economic indicators: inflation, employment, and activity. Designed for decision-making.</div>
-      <div class="project-tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data Viz</span></div>
-    </div>
-    <div class="project-card coming-soon" data-label="PRÓXIMO">
-      <div class="project-icon">🗄️</div>
-      <div class="project-title" data-lang="es">Análisis con SQL — Preguntas de Negocio</div>
-      <div class="project-title" data-lang="en">SQL Analysis — Business Questions</div>
-      <div class="project-desc" data-lang="es">Resolución de preguntas de negocio reales sobre una base de datos pública usando SQL: segmentación, tendencias y KPIs.</div>
-      <div class="project-desc" data-lang="en">Answering real business questions over a public database using SQL: segmentation, trends, and KPIs.</div>
-      <div class="project-tags"><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">Analytics</span></div>
+    <div class="section-header-inner">
+      <span class="section-num">03</span>
+      <h2 data-lang="es">Proyectos</h2>
+      <h2 data-lang="en">Projects</h2>
+      <div class="section-line"></div>
     </div>
   </div>
-  <p class="projects-note" data-lang="es">los proyectos se irán publicando en GitHub a medida que se completen</p>
+
+  <div class="bento-grid">
+
+    <!-- FEATURED: Project 1 full width -->
+    <div class="bento-card featured coming-soon">
+      <div class="bento-left">
+        <div class="bento-status">
+          <span class="status-dot pulse"></span>
+          <span data-lang="es">en proceso</span>
+          <span data-lang="en">in progress</span>
+        </div>
+        <div class="bento-title" data-lang="es">Análisis Macroeconómico Argentina — EDA con Python</div>
+        <div class="bento-title" data-lang="en">Argentina Macroeconomic Analysis — EDA with Python</div>
+        <div class="bento-desc" data-lang="es">Exploración de indicadores macroeconómicos (INDEC / BCRA) con Python. Limpieza de microdatos, visualización de series de tiempo, detección de rupturas estructurales y construcción de indicadores compuestos.</div>
+        <div class="bento-desc" data-lang="en">Exploration of macroeconomic indicators (INDEC / BCRA) using Python. Microdata cleaning, time series visualization, structural break detection, and composite indicator construction.</div>
+        <div class="bento-tags">
+          <span class="tag">Python</span><span class="tag">Pandas</span>
+          <span class="tag">Matplotlib</span><span class="tag">INDEC</span><span class="tag">BCRA</span>
+        </div>
+      </div>
+      <div class="bento-right">
+        <div class="bento-meta-label" data-lang="es">Tipo</div>
+        <div class="bento-meta-label" data-lang="en">Type</div>
+        <div class="bento-meta-val" data-lang="es">Análisis exploratorio</div>
+        <div class="bento-meta-val" data-lang="en">Exploratory analysis</div>
+        <div class="bento-meta-label" style="margin-top:0.75rem;">Stack</div>
+        <div class="bento-meta-val">Python · Jupyter</div>
+        <div class="bento-meta-label" style="margin-top:0.75rem;">Datos</div>
+        <div class="bento-meta-val">INDEC · BCRA</div>
+        <div class="bento-meta-label" style="margin-top:0.75rem;">GitHub</div>
+        <div class="bento-meta-val">— próximo —</div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="bento-card coming-soon">
+      <div class="bento-status">
+        <span class="status-dot"></span>
+        <span data-lang="es">próximo</span>
+        <span data-lang="en">coming soon</span>
+      </div>
+      <div class="bento-title" data-lang="es">Dashboard Económico — Power BI</div>
+      <div class="bento-title" data-lang="en">Economic Dashboard — Power BI</div>
+      <div class="bento-desc" data-lang="es">Dashboard interactivo con KPIs de inflación, empleo y actividad económica. Diseñado para toma de decisiones ejecutivas.</div>
+      <div class="bento-desc" data-lang="en">Interactive dashboard with inflation, employment, and economic activity KPIs. Designed for executive decision-making.</div>
+      <div class="bento-tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data Viz</span></div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="bento-card coming-soon">
+      <div class="bento-status">
+        <span class="status-dot"></span>
+        <span data-lang="es">próximo</span>
+        <span data-lang="en">coming soon</span>
+      </div>
+      <div class="bento-title" data-lang="es">SQL Analytics — Preguntas de Negocio</div>
+      <div class="bento-title" data-lang="en">SQL Analytics — Business Questions</div>
+      <div class="bento-desc" data-lang="es">Consultas sobre base de datos pública respondiendo preguntas de negocio reales: segmentación, cohortes y tendencias.</div>
+      <div class="bento-desc" data-lang="en">Queries over a public database answering real business questions: segmentation, cohorts, and trends.</div>
+      <div class="bento-tags"><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">Analytics</span></div>
+    </div>
+
+  </div>
+
+  <p class="projects-note" data-lang="es">proyectos se publicarán en GitHub a medida que se completen</p>
   <p class="projects-note" data-lang="en">projects will be published on GitHub as they are completed</p>
 </section>
 
+<!-- EDUCATION -->
 <section id="education">
   <div class="section-header">
-    <h2 data-lang="es">Formación</h2>
-    <h2 data-lang="en">Education</h2>
-    <div class="section-divider"></div>
+    <div class="section-header-inner">
+      <span class="section-num">04</span>
+      <h2 data-lang="es">Formación</h2>
+      <h2 data-lang="en">Education</h2>
+      <div class="section-line"></div>
+    </div>
   </div>
+
   <div class="education-grid">
     <div class="edu-card">
       <div>
@@ -585,48 +816,49 @@
         <div class="edu-detail" data-lang="es">Buenos Aires · En curso</div>
         <div class="edu-detail" data-lang="en">Buenos Aires · In progress</div>
       </div>
-      <div class="edu-period">feb 2026 —<br>actualidad</div>
+      <div class="edu-period">feb 2026 —<br>presente</div>
     </div>
     <div class="edu-card">
       <div>
         <div class="edu-degree" data-lang="es">Licenciatura en Economía</div>
         <div class="edu-degree" data-lang="en">Bachelor's in Economics</div>
         <div class="edu-school">Universidad Nacional de Tucumán (UNT)</div>
-        <div class="edu-detail" data-lang="es">Promedio: 9.14 · 3° entre 479 estudiantes · Segundo Escolta de la Facultad</div>
-        <div class="edu-detail" data-lang="en">GPA: 9.14/10 · Ranked 3rd among 479 students · Faculty Honours</div>
+        <div class="edu-detail" data-lang="es">Promedio 9.14 · 3° entre 479 estudiantes · Segundo Escolta de la Facultad</div>
+        <div class="edu-detail" data-lang="en">GPA 9.14/10 · Ranked 3rd among 479 students · Faculty Honours</div>
       </div>
       <div class="edu-period">2021 — 2025</div>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
-    <div class="contact-eyebrow" data-lang="es">¿hablamos?</div>
-    <div class="contact-eyebrow" data-lang="en">let's talk</div>
-    <h2 data-lang="es">Estoy abierto a<br>nuevas oportunidades</h2>
+    <div class="contact-eyebrow" data-lang="es">iniciar contacto</div>
+    <div class="contact-eyebrow" data-lang="en">establish contact</div>
+    <h2 data-lang="es">Abierto a nuevas<br>oportunidades</h2>
     <h2 data-lang="en">Open to new<br>opportunities</h2>
     <div class="contact-links-grid">
       <a href="mailto:damasosanchezdiaz@gmail.com" class="contact-row">
-        <span class="contact-row-label">Email</span>
+        <span class="contact-row-label">email</span>
         <span class="contact-row-value">damasosanchezdiaz@gmail.com</span>
       </a>
       <a href="tel:+543816280587" class="contact-row">
-        <span class="contact-row-label" data-lang="es">Teléfono</span>
-        <span class="contact-row-label" data-lang="en">Phone</span>
+        <span class="contact-row-label" data-lang="es">teléfono</span>
+        <span class="contact-row-label" data-lang="en">phone</span>
         <span class="contact-row-value plain">+54 381 628 0587</span>
       </a>
       <a href="https://www.linkedin.com/in/damaso-sanchez-diaz" target="_blank" class="contact-row">
-        <span class="contact-row-label">LinkedIn</span>
-        <span class="contact-row-value">linkedin.com/in/damaso-sanchez-diaz →</span>
+        <span class="contact-row-label">linkedin</span>
+        <span class="contact-row-value">damaso-sanchez-diaz →</span>
       </a>
     </div>
   </div>
 </section>
 
 <footer>
-  <span data-lang="es">Dámaso Sánchez Díaz · Economista &amp; Data Analyst · Tucumán / Buenos Aires, Argentina</span>
-  <span data-lang="en">Dámaso Sánchez Díaz · Economist &amp; Data Analyst · Tucumán / Buenos Aires, Argentina</span>
+  <span data-lang="es">dámaso sánchez díaz · economista &amp; data analyst · tucumán / buenos aires</span>
+  <span data-lang="en">dámaso sánchez díaz · economist &amp; data analyst · tucumán / buenos aires</span>
 </footer>
 
 <script>
@@ -636,11 +868,6 @@ function setLang(lang) {
     btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
   });
   document.documentElement.lang = lang;
-  document.querySelectorAll('.project-card.coming-soon').forEach((c, i) => {
-    const labels = [['EN PROCESO','IN PROGRESS'],['PRÓXIMO','COMING SOON'],['PRÓXIMO','COMING SOON']];
-    const pair = labels[i] || [c.dataset.label, c.dataset.label];
-    c.dataset.label = lang === 'en' ? pair[1] : pair[0];
-  });
 }
 
 const observer = new IntersectionObserver((entries) => {
@@ -650,11 +877,11 @@ const observer = new IntersectionObserver((entries) => {
       entry.target.style.transform = 'translateY(0)';
     }
   });
-}, { threshold: 0.08 });
+}, { threshold: 0.07 });
 
-document.querySelectorAll('.timeline-item, .edu-card, .project-card').forEach(el => {
+document.querySelectorAll('.timeline-item, .edu-card, .bento-card').forEach(el => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(18px)';
+  el.style.transform = 'translateY(16px)';
   el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
   observer.observe(el);
 });
