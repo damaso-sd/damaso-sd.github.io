@@ -704,6 +704,49 @@
     width: 100%; height: 100%; border: none; display: block;
   }
 
+
+  .doc-card-preview--thumb { padding: 0; gap: 0; }
+  .doc-thumb-wrap {
+    position: relative; width: 100%; overflow: hidden;
+    border-bottom: 1px solid var(--border2);
+    flex: 1;
+  }
+  .doc-thumb-img {
+    width: 100%; display: block;
+    transition: transform 0.35s ease, filter 0.35s ease;
+    filter: brightness(0.92);
+  }
+  .doc-card:hover .doc-thumb-img { transform: scale(1.03); filter: brightness(0.7); }
+  .doc-thumb-overlay {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .doc-card:hover .doc-thumb-overlay { opacity: 1; }
+  .doc-card-preview--thumb .doc-preview-meta {
+    padding: 0.6rem 1.5rem 0; text-align: center;
+  }
+  .doc-card-preview--thumb { padding-bottom: 1rem; }
+
+  @media (hover: none) {
+    /* En touch: mostrar siempre el menú directamente al tap */
+    .expandable-card .card-hover-menu {
+      position: static;
+      opacity: 1;
+      pointer-events: all;
+      border: none;
+      border-top: 1px solid var(--border2);
+      border-radius: 0 0 12px 12px;
+      box-shadow: none;
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+    .expandable-card .card-default-view { opacity: 1; }
+    .expandable-card .card-hint { display: none; }
+    .expandable-card:hover { transform: none; box-shadow: none; }
+    .expandable-card { overflow: visible; border-color: var(--border); }
+    .expandable-card:hover .card-default-view { opacity: 1; }
+  }
+
 </style>
 </head>
 <body class="lang-es">
@@ -939,7 +982,7 @@
         <div class="project-title" data-lang="en">Argentine Macroeconomic Analysis</div>
         <div class="project-desc" data-lang="es">Exploración de indicadores macroeconómicos argentinos con Python: inflación, curva de Laffer, poder adquisitivo. Proyecto vivo, en actualización continua.</div>
         <div class="project-desc" data-lang="en">Exploration of Argentine macroeconomic indicators with Python: inflation, Laffer curve, purchasing power. Live project, continuously updated.</div>
-        <div class="project-tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">INDEC</span></div>
+        <div class="project-tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">NumPy</span></div>
         <div class="card-hint" data-lang="es">Pasá el cursor para explorar →</div>
         <div class="card-hint" data-lang="en">Hover to explore →</div>
       </div>
@@ -1075,33 +1118,25 @@
     <!-- TESIS -->
     <div class="doc-card" onclick="openPDF('tesis')">
       <div class="doc-card-header">
-        <div class="doc-card-eyebrow">Tesis de grado · LaTeX · Behavioral Economics</div>
+        <div class="doc-card-eyebrow">Tesis de grado · Word · Behavioral Economics</div>
         <div class="doc-card-title" data-lang="es">Tesis de Licenciatura</div>
         <div class="doc-card-title" data-lang="en">Undergraduate Thesis</div>
         <div class="doc-card-subtitle" data-lang="es">Análisis del derecho argentino vigente bajo la óptica del Behavioral Economics</div>
         <div class="doc-card-subtitle" data-lang="en">Analysis of current Argentine law through the lens of Behavioral Economics</div>
       </div>
-      <div class="doc-card-preview">
-        <div class="doc-preview-icon">
-          <svg width="40" height="48" viewBox="0 0 40 48" fill="none">
-            <rect width="40" height="48" rx="4" fill="#1a1f1b"/>
-            <rect x="1" y="1" width="38" height="46" rx="3" stroke="rgba(62,207,142,0.3)" stroke-width="1"/>
-            <rect x="8" y="10" width="24" height="2" rx="1" fill="rgba(62,207,142,0.5)"/>
-            <rect x="8" y="15" width="20" height="1.5" rx="0.75" fill="rgba(255,255,255,0.15)"/>
-            <rect x="8" y="19" width="22" height="1.5" rx="0.75" fill="rgba(255,255,255,0.15)"/>
-            <rect x="8" y="23" width="18" height="1.5" rx="0.75" fill="rgba(255,255,255,0.15)"/>
-            <rect x="8" y="29" width="24" height="1.5" rx="0.75" fill="rgba(255,255,255,0.1)"/>
-            <rect x="8" y="33" width="21" height="1.5" rx="0.75" fill="rgba(255,255,255,0.1)"/>
-            <rect x="8" y="37" width="19" height="1.5" rx="0.75" fill="rgba(255,255,255,0.1)"/>
-          </svg>
+      <div class="doc-card-preview doc-card-preview--thumb">
+        <div class="doc-thumb-wrap">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgdmlld0JveD0iMCAwIDI4MCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3R5bGU9ImRpc3BsYXk6YmxvY2s7Ym9yZGVyLXJhZGl1czowIDAgMCAwOyI+CiAgPHJlY3Qgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNmNWY1ZjAiLz4KICA8IS0tIEZvbmRvIGhvamEgLS0+CiAgPHJlY3QgeD0iMzAiIHk9IjEwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjE4MCIgcng9IjIiIGZpbGw9IndoaXRlIiBzdHJva2U9IiNkZGQiIHN0cm9rZS13aWR0aD0iMC41Ii8+CiAgPCEtLSBMb2dvcyBhYnN0cmFjdG9zIHRvcCAtLT4KICA8Y2lyY2xlIGN4PSI2NSIgY3k9IjM4IiByPSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAzMzY2IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDx0ZXh0IHg9IjY1IiB5PSI0MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI5IiBmaWxsPSIjMDAzMzY2IiBmb250LXdlaWdodD0iYm9sZCI+VU5UPC90ZXh0PgogIDxyZWN0IHg9IjkyIiB5PSIyNyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjIwIiByeD0iMSIgZmlsbD0iI2NjMjIwMCIgb3BhY2l0eT0iMC44NSIvPgogIDx0ZXh0IHg9IjEwMSIgeT0iNDEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iOCIgZmlsbD0id2hpdGUiIGZvbnQtd2VpZ2h0PSJib2xkIj5FPC90ZXh0PgogIDwhLS0gSU5WRUNPIGRlcmVjaG8gLS0+CiAgPHRleHQgeD0iMjAwIiB5PSIzOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI3IiBmaWxsPSIjNDQ0IiBmb250LXdlaWdodD0iYm9sZCIgbGV0dGVyLXNwYWNpbmc9IjEiPklOVkVDTzwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9IjQ2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjUiIGZpbGw9IiM2NjYiPkluc3RpdHV0byBkZSBJbnZlc3RpZ2FjaW9uZXM8L3RleHQ+CiAgPCEtLSBMw61uZWEgZGl2aXNvcmEgLS0+CiAgPGxpbmUgeDE9IjQ1IiB5MT0iNTgiIHgyPSIyMzUiIHkyPSI1OCIgc3Ryb2tlPSIjZGRkIiBzdHJva2Utd2lkdGg9IjAuNSIvPgogIDwhLS0gVMOtdHVsbyBjZW50cmFkbyAtLT4KICA8dGV4dCB4PSIxNDAiIHk9Ijc2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjcuNSIgZmlsbD0iIzFhMWEyZSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc3R5bGU9Iml0YWxpYyI+RmFpcm5lc3MsIFNlc2dvIGRlIERpc3BvbmliaWxpZGFkPC90ZXh0PgogIDx0ZXh0IHg9IjE0MCIgeT0iODciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNy41IiBmaWxsPSIjMWExYTJlIiBmb250LXdlaWdodD0iYm9sZCIgZm9udC1zdHlsZT0iaXRhbGljIj55IFB1bnRvIGRlIFJlZmVyZW5jaWE8L3RleHQ+CiAgPHRleHQgeD0iMTQwIiB5PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNiIgZmlsbD0iIzQ0NCI+YW7DoWxpc2lzIGNvbmR1Y3R1YWwgZGUgYXJ0w61jdWxvcyBkZSBsYTwvdGV4dD4KICA8dGV4dCB4PSIxNDAiIHk9IjEwOSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI2IiBmaWxsPSIjNDQ0Ij5Db25zdGl0dWNpw7NuIEFyZ2VudGluYSAoQ04pPC90ZXh0PgogIDwhLS0gU3VidMOtdHVsbyB0aXBvIGxhYmVsIC0tPgogIDxyZWN0IHg9Ijk1IiB5PSIxMTgiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxMSIgcng9IjIiIGZpbGw9IiNmMGYwZjAiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIwLjQiLz4KICA8dGV4dCB4PSIxNDAiIHk9IjEyNyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI2IiBmaWxsPSIjNTU1Ij5UZXNpbmEgZGUgaW52ZXN0aWdhY2nDs248L3RleHQ+CiAgPCEtLSBMw61uZWEgLS0+CiAgPGxpbmUgeDE9IjYwIiB5MT0iMTM4IiB4Mj0iMjIwIiB5Mj0iMTM4IiBzdHJva2U9IiNkZGQiIHN0cm9rZS13aWR0aD0iMC40Ii8+CiAgPCEtLSBBdXRvciB5IGRhdG9zIC0tPgogIDx0ZXh0IHg9IjE0MCIgeT0iMTUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjYuNSIgZmlsbD0iIzMzMyIgZm9udC13ZWlnaHQ9ImJvbGQiPkTDoW1hc28gU8OhbmNoZXogRMOtYXo8L3RleHQ+CiAgPHRleHQgeD0iMTQwIiB5PSIxNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNS41IiBmaWxsPSIjNjY2Ij5Vbml2ZXJzaWRhZCBOYWNpb25hbCBkZSBUdWN1bcOhbjwvdGV4dD4KICA8dGV4dCB4PSIxNDAiIHk9IjE3MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI1LjUiIGZpbGw9IiM2NjYiPkZhY3VsdGFkIGRlIENpZW5jaWFzIEVjb27Ds21pY2FzPC90ZXh0PgogIDx0ZXh0IHg9IjE0MCIgeT0iMTgxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjUiIGZpbGw9IiM5OTkiPkRpY2llbWJyZSAyMDI1PC90ZXh0Pgo8L3N2Zz4=" alt="Portada tesis" class="doc-thumb-img">
+          <div class="doc-thumb-overlay">
+            <span class="doc-preview-cta">
+              <span data-lang="es">Abrir documento</span>
+              <span data-lang="en">Open document</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:5px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </span>
+          </div>
         </div>
         <div class="doc-preview-meta" data-lang="es">64 páginas · PDF</div>
         <div class="doc-preview-meta" data-lang="en">64 pages · PDF</div>
-        <div class="doc-preview-cta">
-          <span data-lang="es">Abrir documento</span>
-          <span data-lang="en">Open document</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:6px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </div>
       </div>
     </div>
 
@@ -1114,25 +1149,19 @@
         <div class="doc-card-subtitle" data-lang="es">Diapositivas elaboradas en LaTeX Beamer para la exposición oral ante el jurado</div>
         <div class="doc-card-subtitle" data-lang="en">Slides built in LaTeX Beamer for the oral defense before the examining committee</div>
       </div>
-      <div class="doc-card-preview">
-        <div class="doc-preview-icon">
-          <svg width="56" height="40" viewBox="0 0 56 40" fill="none">
-            <rect width="56" height="40" rx="4" fill="#1a1f1b"/>
-            <rect x="1" y="1" width="54" height="38" rx="3" stroke="rgba(62,207,142,0.3)" stroke-width="1"/>
-            <rect x="6" y="6" width="44" height="28" rx="2" fill="rgba(62,207,142,0.06)"/>
-            <rect x="10" y="11" width="36" height="3" rx="1.5" fill="rgba(62,207,142,0.4)"/>
-            <rect x="14" y="17" width="28" height="2" rx="1" fill="rgba(255,255,255,0.15)"/>
-            <rect x="16" y="21" width="24" height="2" rx="1" fill="rgba(255,255,255,0.12)"/>
-            <rect x="18" y="25" width="20" height="2" rx="1" fill="rgba(255,255,255,0.1)"/>
-          </svg>
+      <div class="doc-card-preview doc-card-preview--thumb">
+        <div class="doc-thumb-wrap">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgdmlld0JveD0iMCAwIDI4MCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3R5bGU9ImRpc3BsYXk6YmxvY2s7Ij4KICA8cmVjdCB3aWR0aD0iMjgwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFhMWEzZSIvPgogIDwhLS0gU2xpZGUgcHJpbmNpcGFsIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIxNSIgd2lkdGg9IjI0MCIgaGVpZ2h0PSIxNTUiIHJ4PSIzIiBmaWxsPSIjMmEyYTZlIi8+CiAgPCEtLSBIZWFkZXIgYXp1bCBvc2N1cm8gLS0+CiAgPHJlY3QgeD0iMjAiIHk9IjE1IiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjM1IiByeD0iMyIgZmlsbD0iIzFlM2E3YSIvPgogIDxyZWN0IHg9IjIwIiB5PSIzNSIgd2lkdGg9IjI0MCIgaGVpZ2h0PSIxNSIgZmlsbD0iIzFlM2E3YSIvPgogIDwhLS0gVGV4dG8gZGVsIGhlYWRlciAtLT4KICA8dGV4dCB4PSIxNDAiIHk9IjMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjciIGZpbGw9IndoaXRlIiBmb250LXdlaWdodD0iYm9sZCI+RmFpcm5lc3MsIFNlc2dvIGRlIERpc3BvbmliaWxpZGFkIHkgUHVudG8gZGUgUmVmZXJlbmNpYTwvdGV4dD4KICA8dGV4dCB4PSIxNDAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjUuNSIgZmlsbD0iI2FhYzRmZiI+YW7DoWxpc2lzIGNvbmR1Y3R1YWwgZGUgYXJ0w61jdWxvcyBkZSBsYSBDb25zdGl0dWNpw7NuIEFyZ2VudGluYTwvdGV4dD4KICA8IS0tIEF1dG9yIC0tPgogIDx0ZXh0IHg9IjE0MCIgeT0iNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNyIgZmlsbD0id2hpdGUiIGZvbnQtd2VpZ2h0PSJib2xkIj5Ew6FtYXNvIFPDoW5jaGV6IETDrWF6PC90ZXh0PgogIDx0ZXh0IHg9IjE0MCIgeT0iODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNS41IiBmaWxsPSIjYWFjNGZmIj5EaXJlY3RvcmE6IE1hcsOtYSBDcmlzdGluYSBMZWd1aXphbcOzbjwvdGV4dD4KICA8dGV4dCB4PSIxNDAiIHk9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjUuNSIgZmlsbD0iI2FhYzRmZiI+Q29kaXJlY3RvcmE6IE1hcsOtYSBKb3PDqSBMZWd1aXphbcOzbjwvdGV4dD4KICA8IS0tIEzDrW5lYSAtLT4KICA8bGluZSB4MT0iNjAiIHkxPSIxMDAiIHgyPSIyMjAiIHkyPSIxMDAiIHN0cm9rZT0iIzQ0NjZhYSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KICA8IS0tIFVuaXZlcnNpZGFkIC0tPgogIDx0ZXh0IHg9IjE0MCIgeT0iMTE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjYiIGZpbGw9IiNkZGU4ZmYiPlVuaXZlcnNpZGFkIE5hY2lvbmFsIGRlIFR1Y3Vtw6FuPC90ZXh0PgogIDx0ZXh0IHg9IjE0MCIgeT0iMTI0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjYiIGZpbGw9IiNkZGU4ZmYiPkZhY3VsdGFkIGRlIENpZW5jaWFzIEVjb27Ds21pY2FzPC90ZXh0PgogIDwhLS0gRmVjaGEgLS0+CiAgPHRleHQgeD0iMTQwIiB5PSIxNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNiIgZmlsbD0iIzg4OTljYyI+MTEgZGUgZGljaWVtYnJlIGRlIDIwMjU8L3RleHQ+CiAgPCEtLSBOw7ptZXJvIGRpYXBvc2l0aXZhIC0tPgogIDx0ZXh0IHg9IjI0OCIgeT0iMTYzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjUiIGZpbGw9IiM1NTY2OTkiPjE8L3RleHQ+CiAgPCEtLSBCYXJyYSBpbmZlcmlvciBkZWNvcmF0aXZhIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIxNzAiIHdpZHRoPSIyNDAiIGhlaWdodD0iNSIgcng9IjAiIGZpbGw9IiMxZTNhN2EiLz4KICA8IS0tIEzDrW5lYSBkb3JhZGEgZGVjb3JhdGl2YSAtLT4KICA8cmVjdCB4PSIyMCIgeT0iMTc1IiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEuNSIgZmlsbD0iI2YwYzA0MCIgb3BhY2l0eT0iMC42Ii8+Cjwvc3ZnPg==" alt="Portada presentación" class="doc-thumb-img">
+          <div class="doc-thumb-overlay">
+            <span class="doc-preview-cta">
+              <span data-lang="es">Abrir presentación</span>
+              <span data-lang="en">Open presentation</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:5px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </span>
+          </div>
         </div>
         <div class="doc-preview-meta" data-lang="es">Diapositivas · PDF</div>
         <div class="doc-preview-meta" data-lang="en">Slides · PDF</div>
-        <div class="doc-preview-cta">
-          <span data-lang="es">Abrir presentación</span>
-          <span data-lang="en">Open presentation</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:6px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </div>
       </div>
     </div>
 
@@ -1228,7 +1257,7 @@
       </div>
       <div class="project-view-tags">
         <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
-        <span class="tag">Matplotlib</span><span class="tag">INDEC</span><span class="tag">EDA</span><span class="tag">Series de tiempo</span>
+        <span class="tag">Matplotlib</span><span class="tag">NumPy</span><span class="tag">EDA</span><span class="tag">Series de tiempo</span>
       </div>
       <div class="data-source-box">
         <span class="ds-label" data-lang="es">Fuente de datos</span>
@@ -1432,10 +1461,23 @@ function syncProjectLang() {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeProject(); closePDF(); } });
 
-const PDF_URLS = {
-  tesis: "https://damaso-sd.github.io/Docs/Fairness, sesgo de disponibilidad y punto de referencia.pdf",
+
+// Detectar si es móvil/tablet para usar Google Docs viewer
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    || ('ontouchstart' in window && window.innerWidth < 1024);
+}
+
+const PDF_URLS_DIRECT = {
+  tesis: "https://damaso-sd.github.io/Docs/Fairness,%20sesgo%20de%20disponibilidad%20y%20punto%20de%20referencia.pdf",
   presentacion: "https://damaso-sd.github.io/Docs/Presentacion.pdf"
 };
+const PDF_URLS_MOBILE = {
+  tesis: "https://docs.google.com/viewer?url=https://damaso-sd.github.io/Docs/Fairness,%20sesgo%20de%20disponibilidad%20y%20punto%20de%20referencia.pdf&embedded=true",
+  presentacion: "https://docs.google.com/viewer?url=https://damaso-sd.github.io/Docs/Presentacion.pdf&embedded=true"
+};
+
+const PDF_URLS = PDF_URLS_DIRECT; // alias para compatibilidad
 const PDF_TITLES = {
   tesis: "Tesis de Licenciatura — Behavioral Economics",
   presentacion: "Presentación de Defensa — LaTeX Beamer"
@@ -1453,7 +1495,7 @@ function openPDF(which) {
 
   document.getElementById('pdf-modal-title').textContent = PDF_TITLES[which];
   document.getElementById('pdf-modal-pages').textContent = PDF_PAGES[which];
-  dlBtn.href = PDF_URLS[which];
+  dlBtn.href = PDF_URLS_DIRECT[which];
   dlBtn.download = which === 'tesis' ? 'Tesis_Sanchez_Diaz.pdf' : 'Presentacion_Sanchez_Diaz.pdf';
 
   loading.classList.remove('hidden');
@@ -1462,10 +1504,10 @@ function openPDF(which) {
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 
-  // Cargar iframe con pequeño delay para que la animación del modal termine primero
+  const url = isMobile() ? PDF_URLS_MOBILE[which] : PDF_URLS_DIRECT[which];
   setTimeout(() => {
     iframe.onload = () => loading.classList.add('hidden');
-    iframe.src = PDF_URLS[which];
+    iframe.src = url;
   }, 200);
 }
 
